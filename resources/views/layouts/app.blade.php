@@ -1,23 +1,32 @@
 <x-header />
-    <body class="font-sans antialiased">
-        <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+<body>
+    <div class=" drawer drawer-mobile">
+        <input id="drawer" type="checkbox" class="drawer-toggle">
+        <div class="drawer-content" style="scroll-behavior: smooth; scroll-padding-top: 5rem;">
+            <div
+                class="sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur   bg-base-100 text-base-content  ">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+                <x-topbarcontent />
+            </div>
 
-            <!-- Page Content -->
-            <main>
+            <div class="px-4 py-4">
                 {{ $slot }}
-            </main>
+            </div>
+            <x-footer />
         </div>
 
-<x-footer />
+
+        <div class="drawer-side" style="scroll-behavior: smooth; scroll-padding-top: 5rem;"><label for="drawer"
+                class="drawer-overlay"></label>
+
+            <x-navigation />
+        </div>
+
+    </div>
+
+    {{-- @laravelViewsScripts --}}
+    {{-- @stack('modals')
+    @livewireScripts
+</body>
+</html> --}}

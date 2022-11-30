@@ -59,4 +59,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);
+    }
 }
