@@ -95,13 +95,13 @@
         </div>
     </x-slot>
 
-    <x-slot name="actions" class="col-span-6 sm:col-span-4">
-        <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
-        </x-jet-action-message>
+    <x-slot name="actions" class="flex flex-col w-full">
 
         <x-jet-button wire:loading.attr="disabled" wire:target="photo">
             {{ __('Save') }}
         </x-jet-button>
+        {{-- <x-jet-action-message class="ml-3" on="saved">
+            {{ __('Saved.') }}
+        </x-jet-action-message> --}}
     </x-slot>
 </x-jet-form-section>

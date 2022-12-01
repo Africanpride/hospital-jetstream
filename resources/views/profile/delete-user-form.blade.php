@@ -44,7 +44,7 @@
                 </x-jet-secondary-button>
 
                 <x-jet-danger-button class="ml-3" wire:click="deleteUser" wire:loading.attr="disabled">
-                    {{ __('Delete My Account') }}
+                    {{ __('Delete Account') }}
                 </x-jet-danger-button>
             </x-slot>
         </x-jet-dialog-modal>

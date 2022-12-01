@@ -30,7 +30,7 @@
             <label tabindex="0" class="btn btn-ghost btn-circle avatar {{ Auth::check() ? 'online' : 'offline' }}">
                 <div class="w-10 rounded-full ">
 
-                    <img src="{{ Auth::user()?->avatar ?? asset('/images/avatar.png') }}">
+                    <img src="{{  Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->full_name }}">
                 </div>
             </label>
 
