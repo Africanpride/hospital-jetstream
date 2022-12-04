@@ -1,4 +1,4 @@
-<aside class="bg-base-200 w-80">
+<aside class="bg-base-300 w-80">
 
     <div class="z-20  bg-opacity-90 backdrop-blur sticky top-0 items-center gap-2 px-4 py-2  lg:flex ">
 
@@ -64,9 +64,19 @@
                 <span class="flex-1">Events</span>
             </a>
         </li>
+        <li>
+            <a href="{{ url('/test') }}" id=""
+                class="{{ Request::segment(1) == 'test' ? 'active' : '' }}flex gap-4   ">
+                <span class="flex-none">
+                    <x-ri-slideshow-3-line class="w-8 h-8 text-current" />
+                </span>
+                <span class="flex-1">Test</span>
+            </a>
+        </li>
     </ul>
-    <hr class="my-5">
-
+<ul class="menu menu-compact my-3">
+    <li></li>
+</ul>
     <ul class="menu menu-compact flex flex-col p-0 px-4">
 
         <li>
@@ -92,6 +102,5 @@
 
 
     </ul>
-    <div class="from-base-200 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent">
-    </div>
+
 </aside>

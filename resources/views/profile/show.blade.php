@@ -26,7 +26,7 @@
                         </li>
                         <li @click="openTab = 3" :class="{ '-mb-px': openTab === 3 }" class="mr-1">
                             <a :class="openTab === 3 ? activeClasses : inactiveClasses" class="tab tab-bordered"
-                                href="#">2FA Settings</a>
+                                href="#">2FA</a>
                         </li>
                         <li @click="openTab = 4" :class="{ '-mb-px': openTab === 4 }" class="mr-1">
                             <a :class="openTab === 4 ? activeClasses : inactiveClasses" class="tab tab-bordered"
@@ -34,7 +34,7 @@
                         </li>
                         <li @click="openTab = 5" :class="{ '-mb-px': openTab === 5 }" class="mr-1">
                             <a :class="openTab === 5 ? activeClasses : inactiveClasses" class="tab tab-bordered"
-                                href="#">Delete Your Account</a>
+                                href="#">Delete Account</a>
                         </li>
                     </ul>
                     <div class="w-full pt-4">

@@ -3,7 +3,7 @@
 <footer class=" bg-base-200 body-font sticky top-[100vh]">
     <div class="container px-5 py-4 mx-auto flex items-center sm:flex-row flex-col">
       <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-        <x-application-logo class="w-10 h-10 fill-current " />
+        <x-application-logo class="w-5 h-5 fill-current " />
         <span class="ml-3 text-xl  ">{{ config('app.fullname') }}&trade;</span>
       </a>
       <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-300 sm:py-2 sm:mt-0 mt-4">© {{ now()->year }}
