@@ -114,7 +114,7 @@
 
             </div>
 
-            <div class="grid grid-cols-5 gap-x-4 mt-6 ">
+            {{-- <div class="grid grid-cols-5 gap-x-4 mt-6 ">
                 <!-- activities -->
                 <div class="col-span-3 ">
                     <div class="font-semibold text-xs ">Team activities</div>
@@ -194,7 +194,7 @@
                 </div>
                 <!-- /meetings -->
 
-            </div>
+            </div> --}}
 
 
         </section>
@@ -206,9 +206,12 @@
         <section class="col-span-1 bg-base-200 h-full rounded-2xl px-6 pt-10 pb-6">
             <div class="mx-auto w-full text-center flex justify-center">
                 <div class="relative aspect-square rounded-2xl bg-base-200 flex justify-center items-center flex-col text-gray-500 text-sm">
-                    <span>
-                        <img src="images/avatar.png" class="w-20 h-20 rounded-full mb-4 border border-blue-200" alt="" srcset="">
-                    </span>
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar {{ Auth::check() ? 'online' : 'offline' }}">
+                        <div class="w-24 rounded-full ">
+
+                            <img src="{{  Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->full_name }}" class="w-14 h-14">
+                        </div>
+                    </label>
                     <div class="font-semibold">{{ Auth::user()->full_name }}</div>
                     <div class="text-xxs text-gray-400 mt-1.5">Web Developer</div>
                 </div>
@@ -219,11 +222,11 @@
                 <div class="text-gray-500">Email</div>
                 <div class="mt-1.5 font-semibold ">{{ Auth::user()->email }}</div>
 
-                <div class="text-gray-500 mt-5">Mobile</div>
+                <div class="text-gray-500 mt-5">Telephone</div>
                 <div class="mt-1.5 font-semibold{{ Auth::user()->telephone ?? ' Telephone Number' }}</div>
 
-                <div class="text-gray-500 mt-5">Team</div>
-                <div class="mt-1.5 font-semibold">Web Co.</div>
+                <div class="text-gray-500 mt-5">Profile</div>
+                <div class="mt-1.5 font-semibold">{{ __('Add Profile information') }}</div>
 
             </div>
         </section>
