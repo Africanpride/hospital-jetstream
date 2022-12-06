@@ -29,6 +29,15 @@
         </li>
 
         <li>
+            <a href="{{ url('/staff') }}" id=""
+                class="{{ Request::segment(1) == 'staff' ? 'active' : '' }}  flex gap-4   ">
+                <span class="flex-none">
+                    <x-heroicon-o-users class="w-8 h-8 text-current" />
+                </span>
+                <span class="flex-1">Staff</span>
+            </a>
+        </li>
+        {{-- <li>
             <a href="{{ url('/users') }}" id=""
                 class="{{ Request::segment(1) == 'users' ? 'active' : '' }}  flex gap-4   ">
                 <span class="flex-none">
@@ -36,7 +45,7 @@
                 </span>
                 <span class="flex-1">Users</span>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="{{ url('/posts') }}" id=""
                 class="{{ Request::segment(1) == 'posts' ? 'active' : '' }}flex gap-4   ">

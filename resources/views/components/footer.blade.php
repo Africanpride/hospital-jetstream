@@ -32,7 +32,68 @@
       </span>
     </div>
   </footer>
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal-3" class="modal-toggle" />
+<div class="modal modal-middle">
+  <div class="modal-box relative">
+    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="text-lg font-bold">Add New Staff Member</h3>
+    <p class="py-4">Fill form to add new staff member and assign role (eg. Doctor, Pharmacist, Nurse etc..).
+        An Email would be sent to staff member's email address.</p>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
 
+        <div  class="grid grid-cols-2 gap-4">
+            <div>
+                <x-jet-label for="firstName" value="{{ __('First Name') }}" />
+                <x-jet-input id="firstName" class="block mt-1 w-full" type="text" name="firstName" :value="old('firstName')" required autofocus autocomplete="firstName" />
+            </div>
+            <div>
+                <x-jet-label for="lastName" value="{{ __('Last Name') }}" />
+                <x-jet-input id="lastName" class="block mt-1 w-full" type="text" name="lastName" :value="old('lastName')" required autofocus autocomplete="lastName" />
+            </div>
+        </div>
+        <div class="mt-4">
+            <x-jet-label for="email" value="{{ __('Email') }}" />
+            <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+        </div>
+
+        <div class="mt-4">
+            <x-jet-label for="password" value="{{ __('Password') }}" />
+            <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+        </div>
+
+        <div class="mt-4">
+            <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+            <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+        </div>
+
+        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+            <div class="mt-4">
+                <x-jet-label for="terms">
+                    <div class="flex items-center">
+                        <x-jet-checkbox name="terms" id="terms" required />
+
+                        <div class="ml-2">
+                            {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                    'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                    'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+                            ]) !!}
+                        </div>
+                    </div>
+                </x-jet-label>
+            </div>
+        @endif
+
+        <div class="flex flex-col items-center space-y-3 justify-end mt-4">
+
+            <x-jet-button class="ml-4">
+                {{ __('Add New Staff') }}
+            </x-jet-button>
+        </div>
+    </form>
+  </div>
+</div>
 @stack('modals')
 @livewireScripts
 </body>
