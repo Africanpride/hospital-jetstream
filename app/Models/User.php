@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Jetstream\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -66,4 +67,15 @@ class User extends Authenticatable
     {
         return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);
     }
+
+    public function getOnlineStatusAttribute()
+    {
+        return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);
+    }
+
+    public function isOnline()
+{
+    return Cache::has('user-is-online-' . $this->id);
+}
+
 }

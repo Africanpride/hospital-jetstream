@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Models\User;
+use Laravel\Fortify\Features;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+if(User::count() > 1 ) {
+
+    Route::get('register', function() {
+        return view ('auth.login');
+    })->name('register');
+} else {
+    Route::get('register', function() {
+        return view ('auth.register');
+    })->name('register');
+}
+
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    return view('test');
+    $users = User::all();
+    return view('test', compact('users'));
 });
 Route::get('/test2', function () {
+
     return view('test2');
+});
+Route::get('/staff', function () {
+    $users = User::all();
+    return view('staff', compact('users'));
 });
 
 Route::middleware([
