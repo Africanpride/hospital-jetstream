@@ -1,4 +1,6 @@
 <x-app-layout>
+
+
     <div class="bg-base-200 rounded-2xl w-full px-6 py-4 flex items-center text-gray-800 justify-between ">
         <div class="flex items-center ">
             <div>
@@ -48,37 +50,46 @@
         </div>
     </div>
 
-    <section class="grid grid-cols-3 gap-x-6 mt-6">
+    <section class="grid grid-cols-1 md:grid-cols-3 md:gap-4 my-4 md:mb-0 mt-6">
 
         <!-- Members -->
         <section class="col-span-2">
             <div class="text-xs flex items-center justify-between w-full">
-                <span class="font-semibold">Staff members (12)</span>
+                <span class="font-semibold">Staff members ({{ App\Models\User::count() }})</span>
                 <a href="#" class="text-accent-400 font-medium text-xs">View all</a>
             </div>
 
-            <div class="grid grid-cols-4 gap-4 mt-4 ">
-                <label for="my-modal-3" class="">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 ">
 
-                    <div
-                        class="aspect-square rounded-2xl bg-base-200 flex justify-center items-center flex-col text-accent-400 text-sm
-                        hover:shadow hover:text-accent-500 hover:font-medium cursor-pointer group">
-                        <span
-                            class="bg-accent-100 rounded-full group-hover:text-accent-500  text-accent-400 p-2.5 border border-accent-300  border-dashed mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+
+                <div
+                    class="aspect-square rounded-2xl bg-base-200 flex justify-center items-center flex-col text-accent-400 text-sm
+                        hover:shadow hover:text-accent-500 hover:font-medium group">
+                    <span
+                        class="bg-base-100 rounded-full group-hover:text-accent-500  text-accent-400 p-2.5
+                            border border-current hover:border-secondary-focus  border-dashed mb-3">
+                        <label for="my-modal-3" class="cursor-pointer ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 4v16m8-8H4"></path>
                             </svg>
-                        </span>
+                        </label>
+                    </span>
+                    <label for="my-modal-3" class="cursor-pointer ">
                         <div>Add New</div>
-                    </div>
-                </label>
+                    </label>
+                </div>
+
 
                 @forelse ($users as $user)
+                {{-- @if ($loop->first) @continue  @endif --}}
+                {{-- Exclude Current user from Staff list --}}
+                @if($user->id === Auth::user()->id) @continue  @endif
+
                     <div
                         class="relative aspect-square rounded-2xl bg-base-200 flex justify-center items-center flex-col text-gray-500 text-sm
-hover:ring-2 hover:ring-accent-200">
+hover:ring-2 hover:ring-accent-300">
                         <a href="#" class="absolute top-3 right-3 text-gray-400 hover:text-accent-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -88,15 +99,14 @@ hover:ring-2 hover:ring-accent-200">
                             </svg>
                         </a>
                         <span class="relative">
-                            <img src="{{ $user->profile_photo_url }}" class="w-14 h-14 rounded-full mb-3"
-                                alt="{{ $user->full_name }}" srcset="">
+                            <img src="{{ $user->profile_photo_url }}" class="w-14 h-14 rounded-full mb-3" alt="{{ $user->full_name }}" srcset="">
 
                             @if ($user->isOnline())
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                            class="h-3 w-3  fill-green-500 stroke-white stroke-2 absolute bottom-3 right-1"
-                            viewBox="0 0 24 24">
-                            <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2z"></path>
-                        </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3  fill-green-500 stroke-white stroke-2 absolute bottom-3 right-1"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2z"></path>
+                                </svg>
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="h-3 w-3  fill-red-500 stroke-white stroke-2 absolute bottom-3 right-1"
@@ -106,29 +116,29 @@ hover:ring-2 hover:ring-accent-200">
                             @endif
                         </span>
                         <div class="">{{ $user->full_name }}</div>
-                        <div class="text-xxs text-gray-400 mt-1">{{ __('Role') }}</div>
+                        <div class="text-xxs text-gray-400 mt-1">-</div>
                     </div>
 
                 @empty
 
                     {{ __('Account is Currently Empty') }}
                 @endforelse
-
-
-
-
             </div>
-
-
-
-
         </section>
         <!-- /Members -->
 
 
 
         <!-- profile -->
-        <section class="col-span-1 bg-base-200 h-full rounded-2xl px-6 pt-10 pb-6">
+        <section class="bg-base-200 h-full md:col-span-1 md:my-0 my-4 pb-6 pt-10 px-6 rounded-2xl relative">
+            <a href="#" class="absolute top-4 right-4 text-gray-400 hover:text-accent-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+                    </path>
+                </svg>
+            </a>
             <div class="relative flex justify-center items-center flex-col text-gray-500 text-sm">
 
                 <span class="relative">
@@ -153,10 +163,9 @@ hover:ring-2 hover:ring-accent-200">
                 <div class="mt-1.5 font-semibold ">{{ Auth::user()->email }}</div>
 
                 <div class="text-gray-500 mt-5">Telephone</div>
-                <div class="mt-1.5 font-semibold{{ Auth::user()->telephone ?? ' Telephone Number' }}</div>
+                <div class="mt-1.5 font-semibold">{{ Auth::user()->telephone ?? ' Telephone Number' }}</div>
 
-                <div class="text-gray-500
-                    mt-5">Profile</div>
+                <div class="text-gray-500 mt-5">Profile</div>
                 <div class="mt-1.5 font-semibold">{{ __('Add Profile information') }}</div>
 
             </div>

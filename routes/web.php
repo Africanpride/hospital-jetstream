@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Models\User;
 use Laravel\Fortify\Features;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Hide register after Admin account is created
 if(User::count() > 1 ) {
 
     Route::get('register', function() {
@@ -27,21 +29,11 @@ if(User::count() > 1 ) {
     })->name('register');
 }
 
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test', function () {
-    $users = User::all();
-    return view('test', compact('users'));
-});
-Route::get('/test2', function () {
 
-    return view('test2');
-});
-Route::get('/staff', function () {
-    $users = User::all();
-    return view('staff', compact('users'));
-});
 
 Route::middleware([
     'auth:sanctum',
@@ -52,6 +44,25 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/settings', function() {
+        return view('admin.settings');
+    });
+    Route::get('/profile', function() {
         return view('profile.show');
     });
+    Route::get('/test', function () {
+        $users = User::all();
+        return view('test', compact('users'));
+    });
+    Route::get('/test2', function () {
+
+        return view('test2');
+    });
+    Route::get('/staff', function () {
+        $users = User::all();
+        return view('staff', compact('users'));
+    });
+
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
+
 });

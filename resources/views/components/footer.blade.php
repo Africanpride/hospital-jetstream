@@ -68,7 +68,7 @@
             <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
         </div>
 
-        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+        {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
             <div class="mt-4">
                 <x-jet-label for="terms">
                     <div class="flex items-center">
@@ -83,7 +83,7 @@
                     </div>
                 </x-jet-label>
             </div>
-        @endif
+        @endif --}}
 
         <div class="flex flex-col items-center space-y-3 justify-end mt-4">
 
@@ -94,6 +94,7 @@
     </form>
   </div>
 </div>
+
 @stack('modals')
 @livewireScripts
 </body>

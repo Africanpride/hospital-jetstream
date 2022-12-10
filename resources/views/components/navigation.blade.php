@@ -23,7 +23,7 @@
                 <span class="flex-none">
                     <x-heroicon-o-building-office-2 class="w-8 h-8 text-current" />
                 </span>
-                <span class="flex-1">Dashboard</span>
+                <span class="flex-1 capitalize">Dashboard</span>
             </a>
 
         </li>
@@ -34,7 +34,7 @@
                 <span class="flex-none">
                     <x-heroicon-o-users class="w-8 h-8 text-current" />
                 </span>
-                <span class="flex-1">Staff</span>
+                <span class="flex-1 capitalize">Staff</span>
             </a>
         </li>
         {{-- <li>
@@ -47,12 +47,12 @@
             </a>
         </li> --}}
         <li>
-            <a href="{{ url('/posts') }}" id=""
-                class="{{ Request::segment(1) == 'posts' ? 'active' : '' }}flex gap-4   ">
+            <a href="{{ url('/appointments') }}" id=""
+                class="{{ Request::segment(1) == 'appointments' ? 'active' : '' }}flex gap-4   ">
                 <span class="flex-none">
                     <x-heroicon-o-newspaper class="w-8 h-8 text-current" />
                 </span>
-                <span class="flex-1">Posts</span>
+                <span class="flex-1 capitalize">appointments</span>
             </a>
         </li>
         <li>
@@ -65,12 +65,12 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('/events') }}" id=""
-                class="{{ Request::segment(1) == 'events' ? 'active' : '' }}flex gap-4   ">
+            <a href="{{ url('/report') }}" id=""
+                class="{{ Request::segment(1) == 'report' ? 'active' : '' }}flex gap-4   ">
                 <span class="flex-none">
                     <x-carbon-event class="w-8 h-8 text-current" />
                 </span>
-                <span class="flex-1">Events</span>
+                <span class="flex-1 capitalize">reports</span>
             </a>
         </li>
         <li>
@@ -79,7 +79,7 @@
                 <span class="flex-none">
                     <x-ri-slideshow-3-line class="w-8 h-8 text-current" />
                 </span>
-                <span class="flex-1">Test</span>
+                <span class="flex-1 capitalize">Documentation</span>
             </a>
         </li>
     </ul>
@@ -106,6 +106,15 @@
                 </span>
                 <span class="flex-1">Permissions</span>
                 <span class=" badge badge-secondary aspect-square">+</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('settings') }}" id=""
+                class="{{ Request::segment(1) == 'settings' ? 'active' : '' }} flex gap-4   ">
+                <span class="flex-none">
+                    <x-fluentui-wrench-screwdriver-20-o class="w-8 h-8 text-current" />
+                </span>
+                <span class="flex-1">Settings</span>
             </a>
         </li>
 

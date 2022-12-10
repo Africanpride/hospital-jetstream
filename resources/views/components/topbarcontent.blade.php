@@ -21,8 +21,10 @@
     <div class="flex-0 flex items-center gap-2">
 
 
-        Hello! {{ Auth::user()->firstName ?? 'Welcome!' }}
+        <x-bi-bell  class="border-base-300 border-r h-8 mr-3 pr-3 text-current w-8" />
 
+
+        <div> Hello! <span class="capitalize">{{ Auth::user()->firstName ?? 'Welcome!' }}</span></div>
 
 
         <div class="dropdown dropdown-end">
@@ -30,25 +32,25 @@
             <label tabindex="0" class="btn btn-ghost btn-circle avatar {{ Auth::check() ? 'online' : 'offline' }}">
                 <div class="w-10 rounded-full ">
 
-                    <img src="{{  Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->full_name }}">
+                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->full_name }}">
                 </div>
             </label>
 
             <ul tabindex="0"
                 class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-auto px-3">
 
+                <li><a href="{{ url('dashboard') }}" class="flex items-center justify-start  gap-2"> <span>
+                            <x-radix-gear class="text-current w-5 h-5 " />
+                        </span> <span class="capitalize">{{ __('dashboard') }}</span></a>
+                </li>
 
                 <li><a href="{{ route('profile.show') }}" class="flex items-center justify-start  gap-2"> <span>
                             <x-heroicon-o-user-circle class="text-current w-5 h-5 " />
                         </span> <span>{{ __('Profile') }}</span></a>
                 </li>
 
-                <li><a href="{{ url('settings') }}" class="flex items-center justify-start  gap-2"> <span>
-                            <x-radix-gear class="text-current w-5 h-5 " />
-                        </span> <span>{{ __('Settings') }}</span></a>
-                </li>
 
-                <li>
+                <li class="w-full">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a class="flex items-center  justify-start gap-2" href="route('logout')"
