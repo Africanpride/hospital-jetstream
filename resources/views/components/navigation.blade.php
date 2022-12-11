@@ -89,7 +89,7 @@
     <ul class="menu menu-compact flex flex-col p-0 px-4">
 
         <li>
-            <a href="{{ route('dashboard') }}" id=""
+            <a href="{{ route('roles.index') }}" id=""
                 class="{{ Request::segment(1) == 'roles' ? 'active' : '' }} flex gap-4   ">
                 <span class="flex-none">
                     <x-fluentui-people-team-32-o class="w-8 h-8 text-current" />

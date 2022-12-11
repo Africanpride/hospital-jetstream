@@ -1,3 +1,4 @@
+<livewire:alert>
 <div class="bg-base-300 flex items-center justify-between my-5 px-5 py-10">
     <div class="flex items-stretch">
         <div class="text-current text-xs">{{ __('Maintain') }} <br> {{ $description}} </div>

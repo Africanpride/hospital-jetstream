@@ -16,6 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        if ($this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data ?')) {
+
+            // Call the php artisan migrate:refresh using Artisan
+            $this->command->call('migrate:refresh');
+
+            $this->command->line("Data cleared, starting from blank database.");
+        }
+
         \App\Models\User::factory()->create([
             'firstName' => 'Kwame',
             'lastName' => 'Opoku',
@@ -24,7 +32,13 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123Ghana'),
             'remember_token' => Str::random(10),
         ]);
-        \App\Models\User::factory(10)->create();
 
+        // How many users you need, defaulting to 20
+        $numberOfUser = $this->command->ask('How many users do you need ?', 20);
+        $this->command->info("Creating {$numberOfUser} users, each will have a channel associated.");
+
+        \App\Models\User::factory($numberOfUser)->create();
+
+        $this->command->info('Users Created!');
     }
 }

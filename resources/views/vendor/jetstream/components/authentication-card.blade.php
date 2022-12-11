@@ -1,6 +1,6 @@
 <section class="md:min-h-screen  grid grid-cols-1 md:grid-cols-3">
     <div
-        class="min-h-[300px] md:min-h-screen md:col-span-1 flex md:grid place-items-center bg-blue-700 text-white text-9xl font-extrabold p-8 relative">
+        class="min-h-[300px] md:min-h-screen md:col-span-1 flex flex-col md:grid place-items-center bg-blue-700 text-white text-9xl font-extrabold p-8 relative">
         <img alt="{{ config('app.name') }}" src="{{ asset('/images/clinic.jpg') }}"
             class="absolute inset-0 h-full w-full object-cover opacity-90" />
         <div class="flex justify-center items-center z-10"> {{ $logo }}</div>
@@ -36,20 +36,8 @@
             </label>
         </div>
     </div>
-    <div class="grid place-items-center p-8 md:col-span-2">
-        <div class="flex justify-center items-center bg-white overflow-hidden my-10"> {{ $slot }}</div>
-
-    </div>
+    <div class="flex flex-col justify-center p-8  md:col-span-2">
+        {{ $slot }}
 
 </section>
 
-
-{{-- <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-    <div>
-        {{ $logo }}
-    </div>
-
-    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-        {{ $slot }}
-    </div>
-</div> --}}

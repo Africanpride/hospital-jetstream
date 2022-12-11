@@ -14,7 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::whereNotIn('name', ['super-admin'])->get();
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -81,5 +82,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         //
+        $role->delete();
+        return back()->with('flash_message', 'Role deleted.');
     }
 }

@@ -12,6 +12,8 @@ class UserExist extends Component
      *
      * @return void
      */
+
+     // check if a user exist in database.
     public function companyAdmin(): bool {
         return (User::count() > 1);
     }
